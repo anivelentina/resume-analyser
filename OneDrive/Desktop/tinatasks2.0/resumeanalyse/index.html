@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Resume Analyzer</h1>
+
+    <!-- Upload Section -->
+    <label for="resumeFile" class="upload-label">Upload Resume:</label>
+    <input type="file" id="resumeFile" accept=".txt,.pdf,.doc,.docx,image/*" onchange="loadFile(event)">
+
+    <!-- Textarea Section -->
+    <textarea id="resumeInput" placeholder="Or paste your resume text here..."></textarea>
+    
+    <button onclick="analyzeResume()">Analyze Resume</button>
+    <div id="results"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
