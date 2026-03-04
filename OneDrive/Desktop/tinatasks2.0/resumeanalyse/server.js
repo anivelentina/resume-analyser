@@ -3,14 +3,22 @@ const multer = require('multer');
 const pdfParse = require('pdf-parse');
 const mammoth = require('mammoth');
 const cors = require('cors');
-const { createClient } = 
-require('@supabase/supabase-js');
+const { createClient } = require('@supabase/supabase-js');
 
-const supabaseUrl = "https://ytozztygvtawaxohsise.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0b3p6dHlndnRhd2F4b2hzaXNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MTUyNjUsImV4cCI6MjA4NjI5MTI2NX0.ygNuHPqf-uGlfDJtX5c5pcpS1cxnHDKs6tqnqrwXLLw";
+// Supabase configuration – in a real application these should be
+// stored in environment variables and **never** committed to source control.
+// You can place them in a .env file and load them with dotenv.
+const supabaseUrl = process.env.SUPABASE_URL ||
+  "https://ytozztygvtawaxohsise.supabase.co";
+const supabaseKey = process.env.SUPABASE_KEY ||
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0b3p6dHlndnRhd2F4b2hzaXNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MTUyNjUsImV4cCI6MjA4NjI5MTI2NX0.ygNuHPqf-uGlfDJtX5c5pcpS1cxnHDKs6tqnqrwXLLw";
+
+// create and export a supabase client instance that can be used
+// anywhere in the application
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const app = express();
-const port = 3000;
+const port = 
 
 app.use(cors());
 app.use(express.json()); // For parsing application/json
